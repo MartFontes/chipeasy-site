@@ -145,7 +145,6 @@ details p{color:var(--muted);margin:0 0 18px}
 .final h2{font-size:clamp(36px,5vw,64px);font-weight:900;margin-top:26px;position:relative}
 .final p{color:var(--muted);font-size:19px;position:relative;margin:16px auto 34px;max-width:46ch}
 .final .btn{position:relative}
-#soon{display:block;margin-top:14px;color:var(--dim);font-size:14px;position:relative}
 footer{border-top:1px solid var(--line2);padding-block:34px;color:var(--dim);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{text-decoration:none;color:var(--muted)}
@@ -255,7 +254,6 @@ footer a{text-decoration:none;color:var(--muted)}
   <h2><span data-i="zH1">Jogue com</span> <span class="gold" data-i="zH2">clareza.</span></h2>
   <p data-i="zP">Baixe o ChipEasy, traga seus torneios da PPPoker e da Suprema e veja onde estão as suas fichas.</p>
   <a class="btn btn-gold dl" href="#baixar" id="dlFinal"><span data-i="ctaHero">Baixar para Windows</span></a>
-  <span id="soon" data-i="soon">Download disponível em breve.</span>
 </div></section>
 </main>
 
@@ -270,7 +268,7 @@ const GRID = [["AA",1,0],["AKs",1,0],["AQs",1,0],["AJs",1,0],["ATs",1,0],["A9s",
   GRID.forEach(([h, r, a]) => { const f = Math.max(0, 1 - r - a), s = []; let x = 0;
     if (r > .01) { s.push(`#e85c4e ${x * 100}% ${(x + r) * 100}%`); x += r; } if (a > .01) { s.push(`#8f1a26 ${x * 100}% ${(x + a) * 100}%`); x += a; } if (f > .01) s.push(`#2f5f8f ${x * 100}% 100%`);
     const i = document.createElement('i'); i.title = h; i.style.background = `linear-gradient(90deg,${s.join(',')})`; g.appendChild(i); });
-  if (DOWNLOAD_URL) { document.querySelectorAll('a.dl, #dlFinal').forEach(a => { a.href = DOWNLOAD_URL; a.target = '_blank'; a.rel = 'noopener'; }); document.getElementById('soon').hidden = true; }
+  if (DOWNLOAD_URL) { document.querySelectorAll('a.dl, #dlFinal').forEach(a => { a.href = DOWNLOAD_URL; a.target = '_blank'; a.rel = 'noopener'; }); }
 })();
 const ES = {
   nav1: 'Funciones', nav2: 'Cómo funciona', nav3: 'Precio', nav4: 'Preguntas', ctaTop: 'Descargar gratis',
@@ -294,7 +292,7 @@ const ES = {
   qEy: 'Preguntas', qH: 'Preguntas frecuentes', q1: '¿En qué salas funciona?', a1: 'PPPoker y Suprema. De PPPoker, ChipEasy capta el review de los torneos completos, mano a mano. De Suprema, descarga tus manos.', q2: '¿Necesito una PC potente?', a2: 'No. La biblioteca del solver ya viene calculada; el programa solo consulta. Funciona en cualquier PC con Windows 10 u 11.',
   q3: '¿Mis manos van a algún servidor?', a3: 'No. Tus manos y tus torneos se quedan en tu computadora. Compartes una mano solo cuando quieras, con un código.', q4: '¿Es asistencia en tiempo real?', a4: 'No. ChipEasy es una herramienta de estudio, para después de la sesión. El uso durante el juego es responsabilidad de cada usuario, según las reglas de la sala donde juega.',
   q5: '¿El solver es confiable?', a5: 'El preflop se resuelve con el mismo tipo de algoritmo de los solvers comerciales, y el postflop se estima a partir de mediciones con un solver postflop. En spots de all-in el resultado coincide con el equilibrio exacto.',
-  zH1: 'Juega con', zH2: 'claridad.', zP: 'Descarga ChipEasy, trae tus torneos de PPPoker y Suprema y mira dónde están tus fichas.', soon: 'Descarga disponible muy pronto.', fTerms: 'Términos de uso', fPriv: 'Privacidad',
+  zH1: 'Juega con', zH2: 'claridad.', zP: 'Descarga ChipEasy, trae tus torneos de PPPoker y Suprema y mira dónde están tus fichas.', fTerms: 'Términos de uso', fPriv: 'Privacidad',
 };
 const PT = {}; document.querySelectorAll('[data-i]').forEach(el => { if (!(el.dataset.i in PT)) PT[el.dataset.i] = el.innerHTML; });
 function setLang(l) {
