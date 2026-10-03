@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ajuda · ChipEasy</title>
+<meta name="description" content="Como usar o ChipEasy: rotina antes do grind, resultados, relatórios, histórico da PPPoker, replay, garimpo, Caça-leaks e solver.">
+<meta property="og:title" content="Ajuda · ChipEasy">
+<meta property="og:image" content="poster.jpg">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#07080b; --bg2:#0e1016; --panel:#12151c; --panel2:#171b24; --line:rgba(233,200,115,.16); --line2:rgba(255,255,255,.07);
+  --fg:#f3eee3; --muted:#a39b87; --dim:#6f6958; --gold:#e3bf68; --gold3:#fff0c2; --green:#7cc77f; --red:#ef6b5c; --blue:#5b8def;
+  --f-display:"Poppins",system-ui,sans-serif; --f-body:"Manrope",system-ui,sans-serif; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.65;margin:0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--f-display);margin:0;letter-spacing:-.02em;text-wrap:balance}
+.gold{background:linear-gradient(100deg,#a77a2b 0%,var(--gold) 30%,var(--gold3) 46%,#d9ad52 62%,#a77a2b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn-gold{background:linear-gradient(100deg,#c79a3e,#f2d78f);color:#16120a}
+/* topo */
+header.top{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(7,8,11,.78);border-bottom:1px solid var(--line2)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--f-display);font-weight:800;font-size:21px}
+.brand img{width:36px;height:36px;border-radius:10px}
+nav.links{display:flex;gap:24px;margin-left:auto;font-size:15px;font-weight:600;color:var(--muted)}
+nav.links a{text-decoration:none}nav.links a:hover,nav.links a[aria-current]{color:var(--fg)}
+/* capa */
+.hero{padding:64px 0 34px;position:relative}
+.hero:before{content:"";position:absolute;inset:-120px 0 auto;height:420px;background:radial-gradient(50% 60% at 50% 0,rgba(227,191,104,.13),transparent 70%);pointer-events:none}
+.eyebrow{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.05;margin:12px 0 14px}
+.hero p{color:var(--muted);max-width:640px;margin:0;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chips a{text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted)}
+.chips a:hover{color:var(--fg);border-color:var(--gold)}
+/* corpo com sumário */
+.layout{display:grid;grid-template-columns:230px 1fr;gap:46px;padding-bottom:90px}
+.toc{position:sticky;top:96px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto}
+.toc b{display:block;font-family:var(--f-display);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+.toc a{display:block;text-decoration:none;color:var(--muted);padding:6px 10px;border-left:2px solid var(--line2)}
+.toc a:hover{color:var(--fg)}
+.toc a.on{color:var(--gold);border-left-color:var(--gold)}
+.toc .grp{margin:16px 0 6px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding-left:12px}
+main{min-width:0}
+section.ch{padding:34px 0 30px;border-top:1px solid var(--line2)}
+section.ch:first-child{border-top:0;padding-top:0}
+.ch-k{font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.ch h2{font-size:clamp(26px,3.2vw,34px);margin:6px 0 10px}
+.lead{color:var(--muted);margin:0 0 20px;max-width:760px}
+.ch h3{font-size:19px;margin:26px 0 10px}
+/* passos */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0 0 20px;display:grid;gap:10px;max-width:780px}
+ol.steps>li{counter-increment:s;position:relative;padding:12px 16px 12px 56px;background:var(--panel);border:1px solid var(--line2);border-radius:14px}
+ol.steps>li:before{content:counter(s);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#16120a;font:800 14px/28px var(--f-display);text-align:center}
+ol.steps b{color:var(--fg)}
+/* figura */
+figure{margin:6px 0 22px}
+figure img{border-radius:14px;border:1px solid var(--line2);cursor:zoom-in;box-shadow:0 20px 60px rgba(0,0,0,.45);background:#0b0d12}
+figcaption{font-size:13.5px;color:var(--dim);margin-top:8px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.duo.narrow{grid-template-columns:.8fr 1.2fr}
+.sm{max-width:560px}
+/* destaques */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 24px}
+.why div{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:18px}
+.why .ic{font-size:24px}
+.why h3{font-size:16.5px;margin:8px 0 6px}
+.why p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+.box{border-radius:16px;padding:16px 18px;margin:16px 0 22px;border:1px solid var(--line);background:var(--panel);max-width:780px;font-size:15.5px}
+.box p{margin:0}.box p+p{margin-top:8px}
+.box.tip{border-color:rgba(124,199,127,.3);background:rgba(124,199,127,.06)}
+.box.warn{border-color:rgba(239,107,92,.35);background:rgba(239,107,92,.06)}
+.box.hl{border-color:rgba(227,191,104,.4);background:rgba(227,191,104,.07)}
+.box b.t{display:block;font-family:var(--f-display);margin-bottom:4px}
+.kbd{font:600 13px/1 var(--f-body);background:#1d212b;border:1px solid var(--line2);border-bottom-width:2px;border-radius:6px;padding:3px 7px;white-space:nowrap}
+ul.tight{margin:0 0 18px;padding-left:20px;max-width:760px}ul.tight li{margin:4px 0}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lb.on{display:flex}.lb img{max-width:min(1500px,100%);max-height:100%;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+footer{border-top:1px solid var(--line2);padding:28px 0;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:none}footer a:hover{color:var(--fg)}
+@media (max-width:980px){.layout{grid-template-columns:1fr}.toc{display:none}.why{grid-template-columns:1fr}.duo,.duo.narrow{grid-template-columns:1fr}}
+@media (max-width:640px){nav.links{display:none}.wrap{padding-inline:16px}body{font-size:16px}ol.steps>li{padding-left:50px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="icon.png" alt="">ChipEasy</a>
+  <nav class="links"><a href="index.html#recursos">Recursos</a><a href="ajuda.html" aria-current="page">Ajuda</a><a href="index.html#faq">Dúvidas</a></nav>
+  <a class="btn btn-gold" href="https://github.com/MartFontes/chipeasy-site/releases/latest/download/ChipEasy-Setup.exe">Baixar grátis</a>
+</div></header>
+
+<div class="wrap hero">
+  <div class="eyebrow">Central de ajuda</div>
+  <h1>Aprenda o ChipEasy <span class="gold">em poucos minutos.</span></h1>
+  <p>Cada parte do programa, passo a passo, com as telas de verdade. Comece pela rotina antes do grind: é ela que faz todo o resto funcionar sozinho.</p>
+  <div class="chips">
+    <a href="#rotina">⏱ Rotina antes do grind</a><a href="#historico-pp">🔗 Conectar a PPPoker</a><a href="#salvar">♡ Salvar mãos</a><a href="#garimpo">✦ Garimpo</a><a href="#leaks">🔍 Caça-leaks</a><a href="#solver">♠ Solver</a>
+  </div>
+</div>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Sumário">
+    <b>Nesta página</b>
+    <div class="grp">Começo</div>
+    <a href="#instalar">Instalar e entrar</a>
+    <div class="grp">Antes e durante o grind</div>
+    <a href="#rotina">Por que montar a sessão</a>
+    <a href="#torneio">Cadastrar torneios</a>
+    <a href="#grade">Grade fixa</a>
+    <a href="#resultado">Lançar o resultado</a>
+    <a href="#numeros">Relatórios e Financeiro</a>
+    <div class="grp">Mãos</div>
+    <a href="#historico-pp">Conectar a PPPoker</a>
+    <a href="#assistir">Assistir torneios</a>
+    <a href="#salvar">Salvar mãos no grind</a>
+    <a href="#suprema">Mãos da Suprema</a>
+    <div class="grp">Estudo</div>
+    <a href="#garimpo">Garimpo</a>
+    <a href="#leaks">Caça-leaks</a>
+    <a href="#solver">Solver</a>
+    <a href="#icm">Mesa final · ICM</a>
+    <a href="#confianca">Até onde confiar</a>
+    <div class="grp">Mais</div>
+    <a href="#extras">Compartilhar e backup</a>
+  </nav>
+
+  <main>
+    <!-- 1 -->
+    <section class="ch" id="instalar">
+      <div class="ch-k">Começo</div>
+      <h2>Instalar e entrar</h2>
+      <ol class="steps">
+        <li>Baixe o instalador no botão <b>Baixar grátis</b> e abra o arquivo <b>ChipEasy-Setup.exe</b>.</li>
+        <li>Se o Windows mostrar <b>“O Windows protegeu o computador”</b>, clique em <b>Mais informações → Executar assim mesmo</b>. O aviso aparece porque o instalador é novo, não porque há algo errado.</li>
+        <li>Crie sua conta (nome, e-mail e senha). Com <b>Manter conectado</b> marcado, o programa entra sozinho das próximas vezes.</li>
+        <li>Em <b>Configurações</b>, diga se você joga <b>sozinho</b> (aparece a aba Banca) ou <b>por um time</b> (aparece o Financeiro, com a divisão do lucro).</li>
+      </ol>
+      <div class="box tip"><p>O programa se atualiza sozinho. Você não precisa baixar de novo a cada versão nova.</p></div>
+    </section>
+
+    <!-- 2 -->
+    <section class="ch" id="rotina">
+      <div class="ch-k">Antes do grind</div>
+      <h2>Por que montar a sessão <span class="gold">antes de jogar</span></h2>
+      <p class="lead">São cinco minutos antes de abrir as mesas. Em troca, você joga a sessão inteira com a cabeça só no poker.</p>
+      <div class="why">
+        <div><div class="ic">🧠</div><h3>Menos energia gasta</h3><p>Nada de caçar torneio no lobby nem fazer conta de horário no meio de uma mão difícil. A lista já está pronta.</p></div>
+        <div><div class="ic">⏰</div><h3>Nenhum registro perdido</h3><p>O alarme toca antes de cada torneio e no fim do registro tardio. Você só clica em <b>Registrei</b>.</p></div>
+        <div><div class="ic">📊</div><h3>Números que se montam sozinhos</h3><p>Com o prêmio de cada torneio lançado, Relatórios, Financeiro e Banca se preenchem sem planilha.</p></div>
+      </div>
+      <figure><img src="ajuda/hoje.jpg" alt="Tela Sessão atual do ChipEasy" loading="lazy"><figcaption>Sessão atual: tudo o que você vai jogar hoje, em ordem de horário.</figcaption></figure>
+      <ol class="steps">
+        <li><b>Novo torneio</b>: adicione os torneios do dia (ou puxe da sua grade fixa).</li>
+        <li><b>Próximo torneio</b>: contagem regressiva para o próximo registro e o que vem depois.</li>
+        <li><b>Registrei</b>: marque quando se registrar. O torneio passa para “Em jogo”.</li>
+        <li><b>Premiado</b> ou <b>Caí</b>: ao sair do torneio, um clique. “Caí” finaliza sem prêmio; “Premiado” abre o resultado.</li>
+        <li><b>Próximos alarmes</b>: todos os horários em que o programa vai te chamar.</li>
+      </ol>
+    </section>
+
+    <!-- 3 -->
+    <section class="ch" id="torneio">
+      <div class="ch-k">Antes do grind</div>
+      <h2>Cadastrar um torneio</h2>
+      <div class="duo narrow">
+        <ol class="steps">
+          <li><b>Nome, site e clube.</b> O clube serve para controlar o saldo de cada um.</li>
+          <li><b>Data, horário e buy-in.</b> Se tiver add-on ou registro tardio, preencha: o alarme avisa antes do fim.</li>
+          <li><b>Repetir toda semana</b>: marque para o torneio entrar na sua grade fixa e aparecer sozinho nas próximas semanas.</li>
+        </ol>
+        <figure><img src="ajuda/novo.jpg" alt="Janela Novo torneio" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="ch" id="grade">
+      <div class="ch-k">Antes do grind</div>
+      <h2>Grade fixa: monte uma vez, use sempre</h2>
+      <p class="lead">Os torneios que você joga toda semana ficam aqui. Eles entram sozinhos na agenda do dia, já com alarme.</p>
+      <figure><img src="ajuda/grade.jpg" alt="Grade fixa" loading="lazy"></figure>
+      <ol class="steps">
+        <li><b>Novo torneio da grade</b>: escolha os dias da semana e o horário.</li>
+        <li><b>+ Sessão</b>: joga hoje um torneio que não é do dia? Um clique coloca ele na sessão atual.</li>
+      </ol>
+    </section>
+
+    <!-- 4 -->
+    <section class="ch" id="resultado">
+      <div class="ch-k">Depois de cada torneio</div>
+      <h2>Lançar o resultado</h2>
+      <div class="duo narrow">
+        <div>
+          <ol class="steps">
+            <li><b>Colocação</b> em que você terminou.</li>
+            <li><b>Prêmio recebido</b> (e bounties, se for KO). É este número que alimenta os relatórios e o financeiro.</li>
+            <li><b>+ mão</b>: anote ali mesmo uma mão que você quer rever depois.</li>
+          </ol>
+          <div class="box hl"><p>Lançou errado? Abra de novo em <b>Editar resultado</b>. Reentradas, rebuys e add-on também entram na conta do investido.</p></div>
+        </div>
+        <figure><img src="ajuda/resultado.jpg" alt="Janela Resultado do torneio" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="ch" id="numeros">
+      <div class="ch-k">Números</div>
+      <h2>Relatórios e Financeiro</h2>
+      <p class="lead">Você não digita nada aqui: tudo vem dos torneios e resultados que já lançou.</p>
+      <figure><img src="ajuda/relatorios.jpg" alt="Relatórios" loading="lazy"><figcaption>Relatórios: lucro acumulado, ROI, ITM, maior sequência sem premiação e resultado por clube e por faixa de buy-in. Escolha dia, semana, mês, ano ou tudo.</figcaption></figure>
+      <figure><img src="ajuda/financeiro.jpg" alt="Financeiro" loading="lazy"><figcaption>Financeiro (para quem joga por time): resultado da semana, makeup, a parte do time, a reserva e a sua, e os saques. Quem joga sozinho vê a aba Banca no lugar.</figcaption></figure>
+    </section>
+
+    <!-- 6 -->
+    <section class="ch" id="historico-pp">
+      <div class="ch-k">Mãos · PPPoker</div>
+      <h2>Conectar o histórico da PPPoker</h2>
+      <p class="lead">Feito uma vez só. Depois disso o ChipEasy baixa suas mãos sozinho, a cada poucos minutos, e separa tudo por torneio.</p>
+      <div class="duo narrow">
+        <figure><img src="ajuda/pp-perfil.jpg" alt="App PPPoker: Perfil e Rever mãos" loading="lazy"><figcaption>No app da PPPoker.</figcaption></figure>
+        <ol class="steps">
+          <li>No app da PPPoker, toque em <b>Perfil</b>.</li>
+          <li>Toque em <b>Rever mãos</b>. Abre uma página com as suas últimas 200 mãos.</li>
+          <li><b>Copie o link dessa página</b> (o endereço que começa com <b>replay.pppoker.net</b>). No celular, use “Compartilhar → Copiar link” e mande para o seu PC.</li>
+        </ol>
+      </div>
+      <figure><img src="ajuda/pp-rever-maos.jpg" alt="Página Rever mãos da PPPoker com o link em destaque" loading="lazy"><figcaption>É este endereço inteiro que você copia.</figcaption></figure>
+      <ol class="steps" start="4" style="counter-reset:s 3">
+        <li>No ChipEasy, abra <b>Rever torneios</b> e cole o link no campo.</li>
+        <li>Clique em <b>Conectar</b>. Pronto: as mãos começam a chegar.</li>
+      </ol>
+      <figure class="sm"><img src="ajuda/pp-conectar.jpg" alt="Campo para colar o link no ChipEasy" loading="lazy"></figure>
+      <div class="box warn"><b class="t">Esse link é como uma senha</b><p>Quem tiver o link vê o seu histórico de mãos. Não mande para ninguém. Ele fica guardado só no seu PC, fora dos backups.</p></div>
+    </section>
+
+    <!-- 7 -->
+    <section class="ch" id="assistir">
+      <div class="ch-k">Mãos · PPPoker</div>
+      <h2>Assistir os torneios depois</h2>
+      <figure><img src="ajuda/pp-torneio.jpg" alt="Rever torneios" loading="lazy"></figure>
+      <ol class="steps">
+        <li>Escolha o dia e o <b>torneio</b>. As mãos chegam organizadas por torneio, com blinds, mesas e o saldo em fichas.</li>
+        <li><b>Assistir todas</b> abre o replay do torneio inteiro, mão a mão. Use os filtros (Joguei, Vi o flop, All-in, Showdown) para ir direto ao que importa.</li>
+        <li><b>♡</b> guarda a mão em <b>Rever mãos</b> para estudar com calma.</li>
+      </ol>
+      <figure><img src="ajuda/replay.jpg" alt="Replay de uma mão" loading="lazy"><figcaption>O replay mostra a mesa, as ações de cada rua e o resultado.</figcaption></figure>
+      <ol class="steps">
+        <li><b>Próxima mão</b>: segue pelo torneio sem fechar o replay. A lista à esquerda mostra o resultado de cada mão.</li>
+        <li><b>Solver</b>: leva a mão direto para o solver, já na sua decisão.</li>
+      </ol>
+    </section>
+
+    <!-- 8 -->
+    <section class="ch" id="salvar">
+      <div class="ch-k">Durante o grind</div>
+      <h2>Salvar uma mão sem perder o foco</h2>
+      <p class="lead">Viu um spot que quer rever? Não pare o jogo para anotar tudo. Escolha o jeito mais rápido:</p>
+      <ul class="tight">
+        <li><b>♡ em Rever torneios</b>: a mão já está lá (o histórico atualiza sozinho). É só tocar no coração.</li>
+        <li><b>+ mão no resultado</b>: ao lançar o resultado do torneio, escreva algo curto como “KJ x A10 no BB”.</li>
+        <li><b>Colar link da mão</b>: em <b>Rever mãos</b>, cole o link compartilhado de uma mão (PPPoker ou Suprema). O ChipEasy preenche tudo e pergunta de qual torneio ela é.</li>
+      </ul>
+      <figure class="sm"><img src="ajuda/colar-link.jpg" alt="Janela Colar link da mão" loading="lazy"></figure>
+      <div class="box tip"><p>Dica: anote só o suficiente para lembrar. A revisão de verdade fica para depois da sessão, com a cabeça fria.</p></div>
+    </section>
+
+    <section class="ch" id="suprema">
+      <div class="ch-k">Mãos · Suprema</div>
+      <h2>Mãos da Suprema</h2>
+      <ol class="steps">
+        <li>No app da Suprema, abra o replay da mão e use a opção de <b>compartilhar</b> para copiar o link.</li>
+        <li>No ChipEasy, vá em <b>Rever mãos → Colar link da mão</b> (ou <b>Importar vários links</b> para colar vários de uma vez).</li>
+        <li>A mão é baixada com todas as ações e fica salva no seu PC, pronta para o replay e o solver.</li>
+      </ol>
+    </section>
+
+    <!-- 9 -->
+    <section class="ch" id="garimpo">
+      <div class="ch-k">Estudo</div>
+      <h2>Garimpo: as mãos que valem a sua revisão</h2>
+      <p class="lead">Ninguém consegue rever centenas de mãos por sessão. O garimpo passa o solver em todas e separa as que fugiram da teoria, com o motivo.</p>
+      <figure><img src="ajuda/maos.jpg" alt="Rever mãos com o garimpo" loading="lazy"></figure>
+      <ol class="steps">
+        <li><b>✦ Garimpo de mãos</b>: ligado, as sugestões entram sozinhas em <b>Para rever</b>.</li>
+        <li>Cada mão garimpada mostra <b>o que você fez, o que o solver faria</b> e quanto isso custou em bb.</li>
+        <li><b>Colar link da mão</b> e <b>Importar vários links</b>: para adicionar mãos de fora do histórico.</li>
+      </ol>
+      <div class="box hl"><p>Depois de rever, marque a mão como revisada (✓). A lista fica só com o que falta.</p></div>
+    </section>
+
+    <!-- 10 -->
+    <section class="ch" id="leaks">
+      <div class="ch-k">Estudo</div>
+      <h2>Caça-leaks: onde você mais perde</h2>
+      <p class="lead">Enquanto o garimpo olha mão a mão, o Caça-leaks olha o conjunto e mostra os padrões que mais custam fichas.</p>
+      <figure><img src="ajuda/leaks.jpg" alt="Caça-leaks" loading="lazy"></figure>
+      <ol class="steps">
+        <li>Abas: <b>Diagnóstico</b>, Erros graves, Posições, Spots, Números e Mãos &amp; Treino. Filtre por mesa, fase (mesa final, semi-final) e stack.</li>
+        <li><b>Seus focos agora</b>: os três leaks mais caros, com o seu número contra o do solver, as mãos envolvidas e o custo em bb/100. Clique em <b>Assistir</b> para ver as mãos.</li>
+      </ol>
+      <div class="box tip"><p>Escolha um foco por semana. Corrigir um leak de cada vez rende mais do que tentar mudar tudo de uma vez.</p></div>
+    </section>
+
+    <!-- 11 -->
+    <section class="ch" id="solver">
+      <div class="ch-k">Estudo</div>
+      <h2>Solver pré-flop</h2>
+      <p class="lead">Ranges de open, 3-bet, call e all-in para 2 a 9 jogadores, de 10 a 60 bb, calculados pelo próprio ChipEasy.</p>
+      <figure><img src="ajuda/solver.jpg" alt="Solver pré-flop" loading="lazy"></figure>
+      <ol class="steps">
+        <li>Abriu o solver a partir de uma mão? O <b>ícone da mão</b> fica no topo: clique para rever o replay sem sair do solver.</li>
+        <li><b>Sua mão</b>: a decisão que você tomou comparada com o solver (melhor jogada, mix, imprecisão ou erro) e a perda em bb.</li>
+      </ol>
+      <p class="lead" style="margin-top:10px">Clique nas ações do topo para andar pela mão; clique numa ação já feita para voltar. Casas apagadas na grade estão fora do range de quem age. <b>Push/Fold · ICM</b> cobre os stacks curtos.</p>
+    </section>
+
+    <section class="ch" id="icm">
+      <div class="ch-k">Estudo</div>
+      <h2>Mesa final · ICM</h2>
+      <p class="lead">Na mesa final, fichas não valem dinheiro na mesma proporção. Aqui o solver usa o stack real de cada jogador e a tabela de prêmios.</p>
+      <figure><img src="ajuda/icm.jpg" alt="Solver de mesa final com ICM" loading="lazy"></figure>
+      <ol class="steps">
+        <li>Mão de mesa final ou semi-final? O solver abre aqui <b>sozinho</b>, com os stacks, o ante, quem fala primeiro e os prêmios já preenchidos.</li>
+        <li>A sua posição aparece como <b>você</b>, parada na sua decisão, com a frequência de cada ação.</li>
+        <li><b>+ Nova mesa</b>: limpa tudo para você montar uma mesa do zero.</li>
+      </ol>
+      <div class="box"><p>Quanto mais jogadores ainda vão falar, mais demora o cálculo: de segundos (poucos jogadores) a uns 25 minutos (mesa cheia desde o UTG). Ele roda em segundo plano enquanto você usa o resto do programa.</p></div>
+    </section>
+
+    <!-- 12 -->
+    <section class="ch" id="confianca">
+      <div class="ch-k">Importante</div>
+      <h2>Até onde confiar no solver</h2>
+      <div class="box hl">
+        <b class="t">O solver é um ótimo ponto de partida, não a palavra final.</b>
+        <p>Ele trabalha com um modelo: o pré-flop é calculado em detalhe, mas o pós-flop é estimado, e os ranges dos adversários são os teóricos, não os reais da sua mesa. Por isso algumas respostas podem não ser exatas.</p>
+        <p>Use a dúvida a seu favor: quando o resultado parecer estranho, investigue. Compare com outros solvers, converse com seu coach ou time, procure o spot em vídeos e grupos de estudo. É assim que você descobre se a mão foi bem jogada, e é assim que se aprende de verdade.</p>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="ch" id="extras">
+      <div class="ch-k">Mais</div>
+      <h2>Compartilhar mãos e backup</h2>
+      <ul class="tight">
+        <li><b>Compartilhar</b>: gere um código curto para mandar uma mão (ou um torneio inteiro) para alguém. Quem recebe abre em <b>Mãos recebidas → Importar código</b>. O código vale 2 dias.</li>
+        <li><b>Exportar texto</b>: monta um resumo da sessão pronto para colar no WhatsApp do time.</li>
+        <li><b>Backup na nuvem</b>: em Configurações, escolha uma pasta do OneDrive, Google Drive ou Dropbox. O ChipEasy copia seus dados para lá sozinho.</li>
+        <li><b>Sites e clubes</b>: cadastre seus clubes e acompanhe o saldo de cada um.</li>
+      </ul>
+      <div class="box tip"><p>Ainda com dúvida? Veja as <a href="index.html#faq">perguntas frequentes</a>.</p></div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="wrap"><span>© 2026 ChipEasy</span><span><a href="index.html">Início</a> · <a href="termos.html">Termos de uso</a> · <a href="termos.html#privacidade">Privacidade</a></span></div></footer>
+<div class="lb" id="lb" aria-hidden="true"><img alt=""></div>
+<script>
+// ampliar imagem ao clicar
+const lb = document.getElementById('lb'), lbi = lb.querySelector('img');
+document.querySelectorAll('figure img').forEach(i => i.addEventListener('click', () => { lbi.src = i.src; lbi.alt = i.alt; lb.classList.add('on'); }));
+lb.addEventListener('click', () => lb.classList.remove('on'));
+addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+// sumário: marca a seção visível
+const links = [...document.querySelectorAll('.toc a')], secs = links.map(a => document.querySelector(a.getAttribute('href')));
+const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }); }, { rootMargin: '-30% 0px -60% 0px' });
+secs.forEach(s => s && io.observe(s));
+</script>
+</body>
+</html>

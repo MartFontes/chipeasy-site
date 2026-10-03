@@ -174,7 +174,7 @@ footer a{text-decoration:none;color:var(--muted)}
 
 <header class="top"><div class="wrap">
   <a class="brand" href="#top"><img src="icon.png" alt="">ChipEasy</a>
-  <nav class="links"><a href="#recursos" data-i="nav1">Recursos</a><a href="#como" data-i="nav2">Como funciona</a><a href="#faq" data-i="nav4">Dúvidas</a></nav>
+  <nav class="links"><a href="#recursos" data-i="nav1">Recursos</a><a href="#como" data-i="nav2">Como funciona</a><a href="ajuda.html" data-i="navAjuda">Ajuda</a><a href="#faq" data-i="nav4">Dúvidas</a></nav>
   <div class="lang" role="group" aria-label="Idioma"><button id="lang-pt" aria-pressed="true">PT</button><button id="lang-es" aria-pressed="false">ES</button></div>
   <a class="btn btn-gold dl" href="#baixar" data-i="ctaTop">Baixar grátis</a>
 </div></header>
@@ -257,7 +257,7 @@ footer a{text-decoration:none;color:var(--muted)}
 </div></section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 ChipEasy</span><span><a href="termos.html" data-i="fTerms">Termos de uso</a> · <a href="termos.html#privacidade" data-i="fPriv">Privacidade</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 ChipEasy</span><span><a href="ajuda.html" data-i="fAjuda">Ajuda</a> · <a href="termos.html" data-i="fTerms">Termos de uso</a> · <a href="termos.html#privacidade" data-i="fPriv">Privacidade</a></span></div></footer>
 
 <script>
 // ---- configure aqui: link do instalador (ex.: GitHub Releases) — vazio = mostra "em breve"
@@ -271,7 +271,7 @@ const GRID = [["AA",1,0],["AKs",1,0],["AQs",1,0],["AJs",1,0],["ATs",1,0],["A9s",
   if (DOWNLOAD_URL) { document.querySelectorAll('a.dl, #dlFinal').forEach(a => { a.href = DOWNLOAD_URL; a.target = '_blank'; a.rel = 'noopener'; }); }
 })();
 const ES = {
-  nav1: 'Funciones', nav2: 'Cómo funciona', nav3: 'Precio', nav4: 'Preguntas', ctaTop: 'Descargar gratis',
+  nav1: 'Funciones', nav2: 'Cómo funciona', nav3: 'Precio', nav4: 'Preguntas', navAjuda: 'Ayuda (PT)', fAjuda: 'Ayuda', ctaTop: 'Descargar gratis',
   heroEy: 'Para quien juega MTT en clubes', heroH1a: 'Descubre dónde pierdes fichas.', heroH1b: 'Con un solver.',
   heroLead: 'ChipEasy capta tus torneos de PPPoker y Suprema, analiza cada decisión con solver e ICM de mesa final, y muestra exactamente cuánto cuesta cada leak en bb.', n0: 'PPPoker y Suprema', s0a: 'review completo', s0b: 'descarga de manos',
   ctaHero: 'Descargar para Windows', n1: 'Gratis para Windows', n2: 'Tus datos se quedan en tu PC', 
