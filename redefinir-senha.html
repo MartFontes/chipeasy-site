@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova senha · ChipEasy</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Manrope:wght@400;600&display=swap">
+<style>
+:root{--bg:#07080b;--panel:#12151c;--line:rgba(233,200,115,.2);--fg:#f3eee3;--muted:#a39b87;--gold:#e3bf68;--red:#ef6b5c;--green:#7cc77f;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:radial-gradient(80% 60% at 50% 20%,#141720,var(--bg));color:var(--fg);font-family:Manrope,system-ui,sans-serif}
+.card{width:min(420px,100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:30px;display:grid;gap:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.logo{display:flex;align-items:center;gap:10px;font:800 20px Poppins,sans-serif}.logo img{width:40px;height:40px;border-radius:10px}
+h1{font:700 24px Poppins,sans-serif;margin:6px 0 0}p{margin:0;color:var(--muted)}
+label{display:grid;gap:6px;font-size:13px;color:var(--muted)}
+input{background:#1c2029;color:var(--fg);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;font-size:15px}
+input:focus{outline:none;border-color:var(--gold)}
+button{background:linear-gradient(100deg,#c79a3e,#f2d78f);color:#16120a;border:0;border-radius:999px;padding:13px;font:700 15px Poppins,sans-serif;cursor:pointer}
+button:disabled{opacity:.6}
+.msg{font-size:14px;padding:10px 12px;border-radius:10px}.err{background:rgba(239,107,92,.12);color:#ff8f80}.ok{background:rgba(124,199,127,.12);color:#94d896}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="logo"><img src="icon.png" alt="">ChipEasy</div>
+  <h1>Criar nova senha</h1>
+  <p id="sub">Digite a nova senha da sua conta. Depois é só entrar no programa com ela.</p>
+  <form id="f" style="display:grid;gap:14px">
+    <label for="p1">Nova senha<input id="p1" type="password" minlength="6" required autocomplete="new-password"></label>
+    <label for="p2">Repita a senha<input id="p2" type="password" minlength="6" required autocomplete="new-password"></label>
+    <div id="m" class="msg" hidden></div>
+    <button id="b" type="submit">Salvar nova senha</button>
+  </form>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+// mesmo projeto Supabase do programa (chave pública — pode ficar no site)
+const SUPABASE_URL = 'https://rtnahnhwceqgikfmrmfa.supabase.co', SUPABASE_KEY = 'sb_publishable_ryDeHZypwkk10wjDmpC8PQ_ox3Id-a7';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const $ = (id) => document.getElementById(id), show = (t, ok) => { const m = $('m'); m.hidden = false; m.className = 'msg ' + (ok ? 'ok' : 'err'); m.textContent = t; };
+const hash = new URLSearchParams(location.hash.slice(1));
+if (hash.get('error_description')) { show('Este link expirou ou já foi usado. Peça um novo em "Esqueci a senha" no programa.'); $('b').disabled = true; }
+$('f').onsubmit = async (e) => {
+  e.preventDefault();
+  if ($('p1').value !== $('p2').value) return show('As senhas não são iguais.');
+  $('b').disabled = true; $('b').textContent = 'Salvando…';
+  const { data } = await sb.auth.getSession();
+  if (!data.session) { $('b').disabled = false; $('b').textContent = 'Salvar nova senha'; return show('Link inválido ou expirado. Peça um novo em "Esqueci a senha" no programa.'); }
+  const { error } = await sb.auth.updateUser({ password: $('p1').value });
+  if (error) { $('b').disabled = false; $('b').textContent = 'Salvar nova senha'; return show(/should be different/i.test(error.message) ? 'Use uma senha diferente da anterior.' : 'Não foi possível salvar: ' + error.message); }
+  $('f').hidden = true; $('sub').textContent = ''; show('Senha alterada! Abra o ChipEasy e entre com a nova senha.', true);
+};
+</script>
+</body>
+</html>
