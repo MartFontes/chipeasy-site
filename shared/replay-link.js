@@ -5,7 +5,7 @@ const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const PPHand = require('./pphand');
-const ORIGIN = 'https://chipeasy.vercel.app';
+const ORIGIN = 'https://www.chipeasy.com.br';
 const DAYS = 30;
 const CODE = /^[A-Z0-9]{8}$/;
 function codeOf(value) {
