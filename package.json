@@ -1,0 +1,17 @@
+{
+  "name": "chipeasy-web-replay",
+  "version": "1.10.63",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "dev": "node scripts/dev.cjs",
+    "test": "node --test tests/*.cjs"
+  },
+  "dependencies": {
+    "@vercel/og": "0.6.8",
+    "react": "19.3.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

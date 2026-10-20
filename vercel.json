@@ -1,0 +1,31 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "functions": {
+    "api/replay.js": {
+      "includeFiles": "shared/**",
+      "maxDuration": 30
+    },
+    "api/pphand.js": {
+      "includeFiles": "shared/pphand.js"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/m/:code/og.png",
+      "destination": "/api/replay?kind=og&code=:code"
+    },
+    {
+      "source": "/m/:code/data.json",
+      "destination": "/api/replay?kind=data&code=:code"
+    },
+    {
+      "source": "/m/:code",
+      "destination": "/api/replay?kind=html&code=:code"
+    },
+    {
+      "source": "/replay/pphand.js",
+      "destination": "/api/pphand"
+    }
+  ]
+}
